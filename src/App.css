@@ -1,38 +1,79 @@
-.App {
-  text-align: center;
+body {
+  background-color: #D4F4DD;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.inputText {
+  width : 640px;
+  height : 200px;
+  word-break: break-word;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.inputTextForm {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.displayTextArea {
+  margin-top: 40px;
+  color : #0E7C7B;
+  font-size: 1.2em;
+  font-weight: 900;
+}
+
+.inputTextArea {
+  color : #0E7C7B;
+  font-size: 1.2em;
+  font-weight: 900;
+}
+
+.submitButton {
+  height: 30px;
+  width : 60px;
+  background-color:#0E7C7B;
+  color: #D4F4DD;
+  font-weight: bold;
+  border-style: none;
+  margin: 15px;
+}
+
+.app{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.speechButtonsHolder {
+  display: flex;
+  flex-direction: row;
+}
+
+.micButton {
+  margin : 15px;
+  width : 60px;
+  height: 30px;
+  background-color:#0E7C7B;
+  color: #D4F4DD;
+  font-weight: bold;
+  border-style: none;
+}
+
+.fullInputWindow {
+  display : flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.buttonsContainer {
+  display : flex;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.submitContainer {
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+  margin : 15px;
 }
