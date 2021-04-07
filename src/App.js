@@ -5,6 +5,16 @@ import * as azureTextSemantics from './azureTextSemantics';
 import * as presentation from './presentation';
 import SpeechButtons from './SpeechButtons';
 
+/*
+  App.js is the main outlook of the application.
+  azureTextSemantics.js is responsible for setting up the text processing APIs.
+  presentation.js is responsible for processing the API results and creating a presentation out of it
+  SpeechButtons.js is a components that manages the microphone input.
+  textProcessing.js contains functions for text processing.
+*/  
+
+
+//component for displaying the input text
 function DisplayTextArea({storedReportText}) {
   return (
     <div>
@@ -17,10 +27,10 @@ function DisplayTextArea({storedReportText}) {
     </div>
   )
 }
-
+//component whose role is to get the input from the user and send it to the input processing components
 function InputForm({storeReportText, updateResultsEntities, updateResultsKeyWords}) {
   const [InputFormText, setInputFormText] = useState("");
-
+  //function that updates the state responsible for keeping the input from the user when recording
   const updateInputFormTextWithMic = (currentSpeechText) => {
     const newInputFormText = InputFormText + currentSpeechText;
     setInputFormText(newInputFormText);
@@ -32,10 +42,10 @@ function InputForm({storeReportText, updateResultsEntities, updateResultsKeyWord
     if (!InputFormText) return;
     storeReportText(InputFormText);
     console.log(textProcessing.divideIntoSentences(InputFormText));
-
+    //azure APIs for keywords generation and for entity identification
     let keyPhrasesPromise = azureTextSemantics.keyPhraseExtraction(textProcessing.divideIntoSentences(InputFormText));
     let entitiesPromise = azureTextSemantics.entityRecognition(textProcessing.divideIntoSentences(InputFormText));
-
+    //send the result of Azure APIS to the presentation creator component
     Promise.all([keyPhrasesPromise, entitiesPromise]).then((twoResults) => {
       const dataFromPromise1 = twoResults[0];
       const dataFromPromise2 = twoResults[1];
